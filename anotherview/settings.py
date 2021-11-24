@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'x^0co_r9%$cx2g#9o8namz$#!g2rvm)gl8m+y(3mkj0bl0k2)w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['www.anotherview.in','anotherview.in']
+ALLOWED_HOSTS = ['*',]
 
 
 # Application definition
@@ -80,11 +80,13 @@ WSGI_APPLICATION = 'anotherview.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'anotherviewdb',
-        'USER': 'sameerverma847',
-        'PASSWORD': 'yOC0rwHx+?xs',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'NAME': 'mini_pro',
+        # 'USER': 'sameerverma847',
+        # 'PASSWORD': 'yOC0rwHx+?xs',
+        'USER':'root',
+        'PASSWORD':'',
+        'HOST':'127.0.0.1',
+        'PORT':'3306',
     }
 }
 
@@ -110,11 +112,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
-SECURE_CONTENT_TYPE_NOSNIFF= True
-SECURE_BROWSER_XSS_FILTER= True
+# SECURE_CONTENT_TYPE_NOSNIFF= False
+# SECURE_BROWSER_XSS_FILTER= False
 # SESSION_COOKIE_SECURE=True
-CSRF_COOKIE_SECURE= False
-X_FRAME_OPTIONS= 'DENY'
+# CSRF_COOKIE_SECURE= True
+# X_FRAME_OPTIONS= 'DENY'
 
 LANGUAGE_CODE = 'en-us'
 
@@ -130,8 +132,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = '/home/caenj14h63eu/public_html/static/'
+# STATIC_URL = '/static/'
+# STATIC_ROOT = '/static/'
 
-MEDIA_ROOT =  '/home/caenj14h63eu/public_html/media/'
+# MEDIA_ROOT =  '/media/'
+# MEDIA_URL = '/media/'
+
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,"static")
+]
+
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'media') 
 MEDIA_URL = '/media/'
+
+LOGIN_URL='/login'
+LOGIN_REDIRECT_URL='/login'
