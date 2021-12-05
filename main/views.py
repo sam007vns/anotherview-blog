@@ -17,7 +17,7 @@ import urllib.parse
 # Create your views here.
 def home(request):
 	context = {}
-	context['trending_news'] = articles.objects.filter(article_type="Trending News").latest('publish_date')
+	context['trending_news'] = articles.objects.filter(article_type="Trending News").exclude(article_display=False).latest('publish_date')
 	context['gadgets'] = articles.objects.filter(article_type="Gadgets").latest('publish_date')
 	context['technology'] = articles.objects.filter(article_type="Technology").latest('publish_date')
 	context['all_articles']= articles.objects.order_by('-publish_date')[:10]
